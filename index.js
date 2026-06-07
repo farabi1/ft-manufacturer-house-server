@@ -46,7 +46,7 @@ function verifyJWT(req, res, next) {
 // ── MongoDB Connection ──────────────────────────────────────────────────────
 const uri =
   process.env.DB_URI ||
-  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.mongodb.net/?retryWrites=true&w=majority`;
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.8uuumgc.mongodb.net/?retryWrites=true&w=majority`;
 
 const client = new MongoClient(uri, {
   serverApi: {
