@@ -8,8 +8,23 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // ── Middleware ───────────────────────────────────────────────────────────────
-app.use(cors());
+app.use(cors({
+  origin: [
+    'http://localhost:3000',
+    'https://ft-manufacturer-house.web.app',
+    'https://ft-manufacturer-house.firebaseapp.com'
+  ],
+  credentials: true,
+}));
 app.use(express.json());
+
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Server is running',
+    status: 'OK'
+  });
+});
+
 
 // ── JWT Verification Middleware ──────────────────────────────────────────────
 function verifyJWT(req, res, next) {
@@ -301,12 +316,6 @@ async function run() {
       }
     });
 
-    // ─────────────────────────────────────────────────────────────────────
-    //  ROOT
-    // ─────────────────────────────────────────────────────────────────────
-    app.get('/', (req, res) => {
-      res.send('Hello FT Manufacturer House');
-    });
 
   } catch (error) {
     console.error('Failed to connect to MongoDB:', error);
