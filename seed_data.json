@@ -1,0 +1,190 @@
+{
+  "products": [
+    {
+      "name": "Industrial CNC Milling Machine V4",
+      "category": "Machinery",
+      "subCategory": "CNC Tools",
+      "price": 12500,
+      "currency": "USD",
+      "stock": 12,
+      "minOrder": 1,
+      "description": "High-precision vertical machining CNC center with advanced automated coolant feed and heavy-duty casting base. Designed for mass metal fabrication and micro-milling.",
+      "images": [
+        "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80",
+        "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80"
+      ],
+      "specifications": {
+        "brand": "FT-Machinery",
+        "power": "7.5 kW",
+        "weight": "1800 kg",
+        "dimensions": "2100 x 1800 x 2200 mm",
+        "warranty": "2 Years"
+      },
+      "isActive": true
+    },
+    {
+      "name": "Pneumatic Heavy-Duty Impact Wrench",
+      "category": "Power Tools",
+      "subCategory": "Pneumatic Tools",
+      "price": 240,
+      "currency": "USD",
+      "stock": 150,
+      "minOrder": 10,
+      "description": "Professional-grade 1/2-inch pneumatic impact wrench delivering up to 1200 ft-lbs of nut-busting torque. Twin-hammer mechanism for high impact speed.",
+      "images": [
+        "https://images.unsplash.com/photo-1572981779307-38b8cabb2407?auto=format&fit=crop&w=600&q=80"
+      ],
+      "specifications": {
+        "brand": "TitanForce",
+        "power": "90 PSI / 6.2 Bar",
+        "weight": "2.1 kg",
+        "dimensions": "185 x 75 x 200 mm",
+        "warranty": "1 Year"
+      },
+      "isActive": true
+    },
+    {
+      "name": "Fiber Laser Metal Cutter 1500W",
+      "category": "Machinery",
+      "subCategory": "Laser Cutters",
+      "price": 8900,
+      "currency": "USD",
+      "stock": 5,
+      "minOrder": 1,
+      "description": "Advanced 1500W fiber laser cutter capable of processing stainless steel, carbon steel, and aluminum plates with supreme precision and minimal kerf width.",
+      "images": [
+        "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80"
+      ],
+      "specifications": {
+        "brand": "FT-Laser",
+        "power": "1500 Watts",
+        "weight": "1250 kg",
+        "dimensions": "3000 x 1500 x 1600 mm",
+        "warranty": "3 Years"
+      },
+      "isActive": true
+    },
+    {
+      "name": "24V Cordless Brushless Rotary Hammer Drill",
+      "category": "Power Tools",
+      "subCategory": "Drills",
+      "price": 185,
+      "currency": "USD",
+      "stock": 320,
+      "minOrder": 5,
+      "description": "High-efficiency brushless hammer drill featuring SDS-Plus chuck, 3 dynamic modes (drilling, hammer-drilling, chiseling), and active vibration control system.",
+      "images": [
+        "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=600&q=80"
+      ],
+      "specifications": {
+        "brand": "TitanForce",
+        "power": "24V Li-ion",
+        "weight": "3.2 kg",
+        "dimensions": "310 x 95 x 220 mm",
+        "warranty": "2 Years"
+      },
+      "isActive": true
+    },
+    {
+      "name": "Industrial Rotary Screw Air Compressor",
+      "category": "Utility",
+      "subCategory": "Air Compressors",
+      "price": 4500,
+      "currency": "USD",
+      "stock": 18,
+      "minOrder": 1,
+      "description": "Continuous-duty rotary screw compressor delivering 45 CFM at 125 PSI. Energy-efficient motor with sound-dampening enclosure for quiet shop operations.",
+      "images": [
+        "https://images.unsplash.com/photo-1581092162384-8987c1d64718?auto=format&fit=crop&w=600&q=80"
+      ],
+      "specifications": {
+        "brand": "FT-Utility",
+        "power": "15 HP / 11 kW",
+        "weight": "420 kg",
+        "dimensions": "1100 x 850 x 1200 mm",
+        "warranty": "1 Year"
+      },
+      "isActive": true
+    },
+    {
+      "name": "High-Capacity Hydraulic Press 50T",
+      "category": "Machinery",
+      "subCategory": "Presses",
+      "price": 3100,
+      "currency": "USD",
+      "stock": 8,
+      "minOrder": 1,
+      "description": "Heavy-duty H-frame hydraulic shop press with 50-ton capacity, adjustable working table, pressure gauge, and automatic piston retraction.",
+      "images": [
+        "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80"
+      ],
+      "specifications": {
+        "brand": "FT-Machinery",
+        "power": "Hydraulic Manual/Pneumatic",
+        "weight": "290 kg",
+        "dimensions": "950 x 750 x 1850 mm",
+        "warranty": "2 Years"
+      },
+      "isActive": true
+    }
+  ],
+  "categories": [
+    {
+      "name": "Machinery",
+      "slug": "machinery",
+      "subCategories": ["CNC Tools", "Laser Cutters", "Presses"],
+      "isActive": true
+    },
+    {
+      "name": "Power Tools",
+      "slug": "power-tools",
+      "subCategories": ["Pneumatic Tools", "Drills"],
+      "isActive": true
+    },
+    {
+      "name": "Utility",
+      "slug": "utility",
+      "subCategories": ["Air Compressors"],
+      "isActive": true
+    }
+  ],
+  "users": [
+    {
+      "email": "admin@ftmanufacturer.com",
+      "name": "Super Admin",
+      "role": "admin",
+      "phone": "+15550199",
+      "address": "Factory HQ, Mirpur, Dhaka"
+    },
+    {
+      "email": "rashidfarabi@gmail.com",
+      "name": "Mamunur Rashid Farabi",
+      "role": "admin",
+      "phone": "+8801700000000",
+      "address": "Dhaka, Bangladesh"
+    },
+    {
+      "email": "buyer@industrial.com",
+      "name": "John Builder",
+      "role": "buyer",
+      "phone": "+15550144",
+      "address": "123 Manufacturing Way, Detroit, MI"
+    }
+  ],
+  "reviews": [
+    {
+      "name": "John Builder",
+      "email": "buyer@industrial.com",
+      "rating": 5,
+      "comment": "The CNC Milling Machine V4 has transformed our metal fabrication shop. Highly precise and robust!",
+      "createdAt": "2026-05-15T08:30:00.000Z"
+    },
+    {
+      "name": "Alice Cooper",
+      "email": "alice@coopertools.com",
+      "rating": 4,
+      "comment": "Pneumatic impact wrench has excellent torque. Heavy-duty construction that takes a beating.",
+      "createdAt": "2026-05-20T14:15:00.000Z"
+    }
+  ]
+}

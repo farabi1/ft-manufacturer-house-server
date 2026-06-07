@@ -87,11 +87,29 @@ async function run() {
     // GET /purchase — list all products
     app.get('/purchase', async (req, res) => {
       try {
-        const products = await productsCollection.find().toArray();
+        const query = {};
+        if (req.query.category) {
+          query.category = req.query.category;
+        }
+        if (req.query.subCategory) {
+          query.subCategory = req.query.subCategory;
+        }
+        const products = await productsCollection.find(query).toArray();
         res.send(products);
       } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).send({ message: 'Failed to fetch products' });
+      }
+    });
+
+    // GET /categories — list all active categories
+    app.get('/categories', async (req, res) => {
+      try {
+        const categories = await db.collection('categories').find({ isActive: true }).toArray();
+        res.send(categories);
+      } catch (error) {
+        console.error('Error fetching categories:', error);
+        res.status(500).send({ message: 'Failed to fetch categories' });
       }
     });
 
