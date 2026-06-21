@@ -252,6 +252,74 @@ async function run() {
       }
     });
 
+    // GET /orders/:id — get single order by ID (JWT required)
+    app.get('/orders/:id', verifyJWT, async (req, res) => {
+      try {
+        const id = req.params.id;
+        const order = await ordersCollection.findOne({ _id: ObjectId(id) });
+        if (!order) {
+          return res.status(404).send({ message: 'Order not found' });
+        }
+        // Verify requester is customer or admin
+        const decodedEmail = req.decoded.email;
+        if (decodedEmail !== order.customerMail && decodedEmail !== order.customer) {
+          const requester = await usersCollection.findOne({ email: decodedEmail });
+          if (!requester || requester.role !== 'admin') {
+            return res.status(403).send({ message: 'Forbidden access' });
+          }
+        }
+        res.send(order);
+      } catch (error) {
+        console.error('Error fetching order by ID:', error);
+        res.status(500).send({ message: 'Failed to fetch order' });
+      }
+    });
+
+    // POST /create-payment-intent — create payment intent for stripe (JWT required)
+    app.post('/create-payment-intent', verifyJWT, async (req, res) => {
+      try {
+        const { price } = req.body;
+        if (!price || isNaN(price)) {
+          return res.status(400).send({ message: 'Invalid price amount' });
+        }
+        const amount = Math.round(parseFloat(price) * 100); // Stripe expects cents
+        const stripeKey = process.env.STRIPE_SECRET_KEY || '';
+        const stripe = require('stripe')(stripeKey);
+        
+        const paymentIntent = await stripe.paymentIntents.create({
+          amount: amount,
+          currency: 'usd',
+          payment_method_types: ['card']
+        });
+        res.send({ clientSecret: paymentIntent.client_secret });
+      } catch (error) {
+        console.error('Error creating payment intent:', error);
+        res.status(500).send({ message: 'Failed to create payment intent', error: error.message });
+      }
+    });
+
+    // PATCH /orders/pay/:id — update order status after successful payment (JWT required)
+    app.patch('/orders/pay/:id', verifyJWT, async (req, res) => {
+      try {
+        const id = req.params.id;
+        const payment = req.body;
+        const filter = { _id: ObjectId(id) };
+        const updatedDoc = {
+          $set: {
+            paid: true,
+            transactionId: payment.transactionId,
+            status: 'paid'
+          }
+        };
+        const result = await ordersCollection.updateOne(filter, updatedDoc);
+        res.send(result);
+      } catch (error) {
+        console.error('Error updating order payment status:', error);
+        res.status(500).send({ message: 'Failed to update payment status' });
+      }
+    });
+
+
     // ─────────────────────────────────────────────────────────────────────
     //  USERS  (/users)
     // ─────────────────────────────────────────────────────────────────────
@@ -345,6 +413,10 @@ async function run() {
 run().catch(console.dir);
 
 // ── Start Server ──────────────────────────────────────────────────────────────
-app.listen(port, () => {
-  console.log(`FT Manufacturer House listening on port ${port}`);
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(port, () => {
+    console.log(`FT Manufacturer House listening on port ${port}`);
+  });
+}
+
+module.exports = { app, client };
